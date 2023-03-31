@@ -1,12 +1,9 @@
 # Project Name
-
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
+Employee Salary Calculator
 
 ## Description
 
-Your project description goes here. What problem did you solve? How did you solve it?
-
-Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
+Create an application that records employee salaries and adds salaries up to report monthly costs.
 
 ## INPUT:
 This weekend project should have the following...
