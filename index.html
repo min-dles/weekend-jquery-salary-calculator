@@ -11,13 +11,71 @@
 </head>
 <body>
     <header>
-        <h1>Salary Calculator</h1>
+        <h1>Krusty Krab Salary Calculator</h1>
     </header>
     <main>
-        <section></section>
+        <section>
+            <h2>Add Employee:</h2>
+            <p>Provide the employee's information with the fields below.</p>
+            <form>
+                <input placeholder="First Name" type="text">
+                <input placeholder="Last Name" type="text">
+                <input placeholder="ID Number" type="text">
+                <input placeholder="Job Title" type="text">
+                <input placeholder="Annual Salary" type="text">
+                <button class="submit-button">Submit</button>
+            </form>
+        </section>
+        <section>
+            <h2>Employee Chart:</h2>
+            <p>Reference all the reported employee information below. If you need to delete an employee's information 
+                from the chart below, click on the Delete button corresponding with the row to delete.</p>
+            <table>
+                <caption>Employee Information & Monthly Budget</caption>
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>ID Number</th>
+                        <th>Job Title</th>
+                        <th>Annual Salary</th>
+                        <th>Delete?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Spongebob</td>
+                        <td>Squarepants</td>
+                        <td>002</td>
+                        <td>Fry Cook</td>
+                        <td>$120</td>
+                        <td><button>🔥</button></td>
+                    </tr>
+                    <tr>
+                        <td>Squidward</td>
+                        <td>Tentacles</td>
+                        <td>003</td>
+                        <td>Cashier</td>
+                        <td>$200</td>
+                        <td><button>🔥</button></td>
+                    </tr>
+                    <tr>
+                        <td>Eugene</td>
+                        <td>Krabs</td>
+                        <td>001</td>
+                        <td>Owner of the Krusty Krab</td>
+                        <td>$120,000</td>
+                        <td><button>🔥</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section>
+            <h2 id="monthly-budget">Monthly Budget Remaining: $PLACEHOLDER</h2>
+        </section>
     </main>
     <footer>
-        <h2>PLACEHOLDER FOR A FOOTER yeah</h2>
+        <h3>PLACEHOLDER FOR A FOOTER yeah</h3>
     </footer>
 </body>
 </html>
