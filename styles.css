@@ -2,9 +2,18 @@ html {
     background-color: pink;
 }
 
+header {
+    background-color: coral;
+    padding: 10px;
+}
+
 section {
-    display: inline-flex;
+    display: flex;
     flex-wrap: wrap;
+}
+
+section#budget-section {
+    justify-content: flex-end;
 }
 
 h1 {
@@ -58,11 +67,6 @@ input {
 section:nth-of-type(2){
     align-items: center;
     justify-content: space-around; /* controls where the flex items sit on main axis */
-}
-
-section:nth-of-type(3){
-    align-items: end;
-    justify-content: space-evenly;
 }
 
 table {
