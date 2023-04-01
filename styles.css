@@ -42,6 +42,18 @@ input {
 .submit-button:hover {
     background-color: rgba(0, 94, 255, 0.68);
 }
+
+.delete-cell {
+    text-align: center;
+}
+
+.delete-button {
+    font-size: 40px;
+}
+
+.delete-button:hover {
+    background-color: orange;
+}
     
 section:nth-of-type(2){
     align-items: center;
