@@ -1,15 +1,15 @@
 $(document).ready(onReady);
 
-const monthlyBudget = 200000;
+const maxMonthlyBudget = 20000;
 let employeeData = [];
 
 function onReady() {
     console.log('Hey there! Everything is working just fine 😎');
     $('.submit-button').on('click', addEmployee);
     $('tbody').on('click', '.delete-button', fireEmployee);
-    let el = $('#budget-remaining');
-    el.empty();
-    el.append(monthlyBudget);
+    // let el = $('#budget-remaining');
+    // el.empty();
+    // el.append(monthlyBudget); <-- ** Not sure how to handle this yet
 }
 
 function addEmployee(event){
@@ -24,7 +24,7 @@ function addEmployee(event){
         lastName: $('#last-name').val(),
         idNum: $('#id-num').val(),
         jobTitle: $('#job-title').val(),
-        salary: $('#salary')
+        salary: $('#employee-salary').val()
     }
 
     // Pushing the data for each employee added into an array (global variable)
@@ -55,7 +55,19 @@ function addEmployee(event){
     $('#last-name').val('');
     $('#id-num').val('');
     $('#job-title').val('');
-    $('#salary').val('');
+    $('#employee-salary').val('');
+
+    calcMonthlyBudget();
+}
+
+function calcMonthlyBudget(){
+
+    let monthlyBudget = 0;
+    for(let i = 0; i < employeeData.length; i++){
+        monthlyBudget += employeeData[i].salary;
+    }
+
+    console.log('Monthly budget is:', monthlyBudget);
 }
 
 function fireEmployee(){
