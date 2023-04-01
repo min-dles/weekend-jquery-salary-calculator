@@ -64,10 +64,17 @@ function calcMonthlyBudget(){
 
     let monthlyBudget = 0;
     for(let i = 0; i < employeeData.length; i++){
-        monthlyBudget += employeeData[i].salary;
-    }
+        // need to divide salary by 12 months 
+        let annualSalary = Number(employeeData[i].salary);
+        let monthlySalary = Number(annualSalary / 12);
 
-    console.log('Monthly budget is:', monthlyBudget);
+        // start cumulating those monthly salaries! 
+        monthlyBudget += monthlySalary;
+    }
+    
+    let el = $('#monthly-budget');
+    el.empty();
+    el.append(monthlyBudget);
 }
 
 function fireEmployee(){
