@@ -11,19 +11,23 @@
 </head>
 <body>
     <header>
-        <h1>Krusty Krab Salary Calculator</h1>
+        <h1><!--Krusty Krab -->Salary Calculator</h1>
     </header>
     <main>
         <section id="input-section">
             <h2>Add Employee:</h2>
             <p>Provide the employee's information with the fields below.</p>
             <form>
-                <input id="first-name" placeholder="First Name" type="text">
-                <input id="last-name" placeholder="Last Name" type="text">
-                <input id="id-num" placeholder="ID Number" type="number">
-                <input id="job-title" placeholder="Job Title" type="text">
-                <input id="employee-salary" placeholder="Annual Salary" type="number">
-                <button class="submit-button">Submit</button>
+                <div id="input-field">
+                    <input id="first-name" placeholder="First Name" type="text">
+                    <input id="last-name" placeholder="Last Name" type="text">
+                    <input id="id-num" placeholder="ID Number" type="number">
+                    <input id="job-title" placeholder="Job Title" type="text">
+                    <input id="employee-salary" placeholder="Annual Salary" type="text">
+                </div>
+                <div id="button-field">
+                    <button type="button" class="submit-button">Submit</button>
+                </div>
             </form>
         </section>
         <section id="employee-deets">
@@ -68,6 +72,11 @@
                         <td><button>🔥</button></td>
                     </tr> -->
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="6"></td>
+                    </tr>
+                </tfoot>
             </table>
         </section>
         <section id="budget-section">

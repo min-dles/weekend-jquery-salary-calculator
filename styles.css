@@ -10,10 +10,17 @@ header {
 section {
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 2rem;
+    justify-content: space-evenly;
+    align-items: flex-end;
 }
 
 section#budget-section {
     justify-content: flex-end;
+}
+
+section #input-section form {
+    align-items: flex-start;
 }
 
 h1 {
@@ -28,40 +35,66 @@ h2 {
     font-size: 20px;
 }
 
-p {
-    justify-content: center;
-    align-items: stretch;
+#input-section h2, 
+#input-section p, 
+#input-section form {
+    align-self: flex-end;
+    margin-top: 1em;
 }
 
 button, table, form, input {
     font-family: 'Lucida Sans Typewriter', 'Lucida Console', 'monaco', 'Bitstream Vera Sans Mono', monospace;
 }
 
+form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1em;
+    align-items: flex-start;
+}
+
 input {
     background-color: rgba(255, 162, 0, 0.854);
-    padding: 10px;
-    justify-content: left;
-}
-
-.submit-button {
-    background-color: rgba(0, 229, 255, 0.68);
-    padding: 15px;
-}
-
-.submit-button:hover {
-    background-color: rgba(0, 94, 255, 0.68);
+    padding: 1em;
 }
 
 .delete-cell {
     text-align: center;
 }
 
-.delete-button {
-    font-size: 40px;
+#button-field {
+    flex-grow: 6;
 }
 
-.delete-button:hover {
+button {
+    border: none;
+    font-family: inherit;
+    padding: 0.25em 0.75em;
+    text-align: center;
+    line-height: 1.1;
+}
+
+.submit-button {
+    background-color: rgba(197, 229, 241, 0.68);
+    padding: 0.5em 2em;
+    align-self: center;
+    border-radius: 0.8em;
+}
+
+.delete-button {
+    font-size: 40px;
+    border-radius: 0.2em;
+}
+
+.submit-button:hover, .submit-button:focus {
+    background-color: rgba(0, 94, 255, 0.68);
+    box-shadow: 0 0 0 2px;
+}
+
+.delete-button:hover, .delete-button:focus {
     background-color: orange;
+    box-shadow: 0 0 0 2px;
 }
     
 section:nth-of-type(2){

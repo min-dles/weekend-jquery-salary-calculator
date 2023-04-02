@@ -70,26 +70,29 @@ function calcMonthlyBudget(){
     let el = $('#monthly-budget');
     el.empty();
     el.append(monthlyBudget);
-    console.log('e,p data:', employeeData);
+    console.log('employee data:', employeeData);
+
+    if (monthlyBudget > maxMonthlyBudget){
+        $('#budget-section').css('background-image', 'linear-gradient(orange, red, orange)');
+    }
 }
 
 function fireEmployee(){
     // attempt to remove salary info from the budget when employees are deleted
     // OMG learned about siblings selector today!!!
-    let employeeSalary = Number($(this).parent().siblings('.salary').text());
-    let monthlySalary = Number(employeeSalary / 12);
+    // let employeeSalary = Number($(this).parent().siblings('.salary').text());
+    // let monthlySalary = Number(employeeSalary / 12);
 
     // GETTER: need to see what monthly budget curently is
-    let monthlyBudget = $('#monthly-budget').text();
-    let updatedBudget = monthlyBudget - monthlySalary;
-    $('#monthly-budget').text(updatedBudget);
-    console.log('Please work:', employeeSalary);
+    // let monthlyBudget = $('#monthly-budget').text();
+    // let updatedBudget = monthlyBudget - monthlySalary;
+    // $('#monthly-budget').text(updatedBudget);
+    // console.log('Please work:', employeeSalary);
 
     // It appears there is an issue between deleting & adding employees now. I need
     // to make sure the array is accurate but not sure how to do that. First attempt below:
-    employeeData.splice($(this).parent().parent());
-    console.log('was it removed?', employeeData);
-
+    // employeeData.splice($(this).parent().parent());
+    // I'm encountering a bug when I delete some lines. Will have to come back to this later. 
 
     // when fire emoji is pressed, remove the row
     $(this).parent().parent().remove();
