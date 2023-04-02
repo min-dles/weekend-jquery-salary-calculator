@@ -36,7 +36,7 @@ function addEmployee(event){
     <tr>
         <td>${newEmployee.firstName}</td>
         <td>${newEmployee.lastName}</td>
-        <td>${newEmployee.idNum}</td>
+        <td class='employee-id'>${newEmployee.idNum}</td>
         <td>${newEmployee.jobTitle}</td>
         <td class='salary'>${newEmployee.salary}</td>
         <td class='delete-cell'><button class='delete-button'>🔥</button></td>
@@ -70,30 +70,48 @@ function calcMonthlyBudget(){
     let el = $('#monthly-budget');
     el.empty();
     el.append(monthlyBudget);
-    console.log('employee data:', employeeData);
 
-    if (monthlyBudget > maxMonthlyBudget){
-        $('#budget-section').css('background-image', 'linear-gradient(orange, red, orange)');
-    }
+    // Set Monthly Budget background to RED if above $20k 
+        // And undo if BELOW $20k
+    // if (monthlyBudget > maxMonthlyBudget){
+        // $('#budget-section').css('background-image', 'linear-gradient(orange, red, orange)');
+    // } else if (monthlyBudget <= maxMonthlyBudget){
+        // $('#budget-section').css('background-image', 'none');
+    // }
+    $('#budget-section').css('background-image', monthlyBudget > 20 * 1000 ? 'linear-gradient(orange, red, orange)' : 'none');
 }
 
 function fireEmployee(){
-    // attempt to remove salary info from the budget when employees are deleted
-    // OMG learned about siblings selector today!!!
-    // let employeeSalary = Number($(this).parent().siblings('.salary').text());
-    // let monthlySalary = Number(employeeSalary / 12);
+    // 1. identify the row that is being deleted by Employee ID: 
+    let employeeID = $(this).parent().siblings('.employee-id').text();
 
-    // GETTER: need to see what monthly budget curently is
-    // let monthlyBudget = $('#monthly-budget').text();
-    // let updatedBudget = monthlyBudget - monthlySalary;
-    // $('#monthly-budget').text(updatedBudget);
-    // console.log('Please work:', employeeSalary);
-
-    // It appears there is an issue between deleting & adding employees now. I need
-    // to make sure the array is accurate but not sure how to do that. First attempt below:
-    // employeeData.splice($(this).parent().parent());
-    // I'm encountering a bug when I delete some lines. Will have to come back to this later. 
-
-    // when fire emoji is pressed, remove the row
+    // 2. when fire emoji is pressed, remove the row (DOM)
     $(this).parent().parent().remove();
+    
+    // 3. reset the array with another function 
+    employeeData = removeObjectWithId(employeeData, employeeID);
+
+    // 4. update the budget based on this new array / data
+    calcMonthlyBudget();
 }
+
+// function to update the employeeData array:
+function removeObjectWithId(array, id) {
+
+    function objectByEmployeeId(employeeObject){
+        return employeeObject.idNum === id; // check that id is equal to the idNum in the object
+    };
+
+    // use built-in method findIndex() to get the index for the appropriate employee object 
+    const objectWithIdIndex = array.findIndex(objectByEmployeeId);
+
+    // this if statement will only run if there is a match between the ID parameter
+    // and any ID in employeeData array 
+    if (objectWithIdIndex > -1) {
+      array.splice(objectWithIdIndex, 1);
+    }
+  
+    // employeeData is now going to be passed back to fireEmployee() function [step 3.]
+    return array;
+  }
+  
