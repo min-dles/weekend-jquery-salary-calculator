@@ -7,9 +7,6 @@ function onReady() {
     console.log('Hey there! Everything is working just fine 😎');
     $('.submit-button').on('click', addEmployee);
     $('tbody').on('click', '.delete-button', fireEmployee);
-    // let el = $('#budget-remaining');
-    // el.empty();
-    // el.append(monthlyBudget); <-- ** Not sure how to handle this yet
 }
 
 function addEmployee(event){
@@ -35,15 +32,13 @@ function addEmployee(event){
 
     // append the value that user provided to a new row in the table below (on the DOM)
     // **had to use backticks for multiple line, & string interpolation for object.property name**
-    // NOTE: there appears to be a bug on line 46 with salary. In the DOM table, annual salary
-    // is being shown as [object Object]
     $('tbody').append(`
     <tr>
         <td>${newEmployee.firstName}</td>
         <td>${newEmployee.lastName}</td>
         <td>${newEmployee.idNum}</td>
         <td>${newEmployee.jobTitle}</td>
-        <td>${newEmployee.salary}</td>
+        <td class='salary'>${newEmployee.salary}</td>
         <td class='delete-cell'><button class='delete-button'>🔥</button></td>
     </tr>
     `);
@@ -61,8 +56,8 @@ function addEmployee(event){
 }
 
 function calcMonthlyBudget(){
-
     let monthlyBudget = 0;
+
     for(let i = 0; i < employeeData.length; i++){
         // need to divide salary by 12 months 
         let annualSalary = Number(employeeData[i].salary);
@@ -75,9 +70,27 @@ function calcMonthlyBudget(){
     let el = $('#monthly-budget');
     el.empty();
     el.append(monthlyBudget);
+    console.log('e,p data:', employeeData);
 }
 
 function fireEmployee(){
+    // attempt to remove salary info from the budget when employees are deleted
+    // OMG learned about siblings selector today!!!
+    let employeeSalary = Number($(this).parent().siblings('.salary').text());
+    let monthlySalary = Number(employeeSalary / 12);
+
+    // GETTER: need to see what monthly budget curently is
+    let monthlyBudget = $('#monthly-budget').text();
+    let updatedBudget = monthlyBudget - monthlySalary;
+    $('#monthly-budget').text(updatedBudget);
+    console.log('Please work:', employeeSalary);
+
+    // It appears there is an issue between deleting & adding employees now. I need
+    // to make sure the array is accurate but not sure how to do that. First attempt below:
+    employeeData.splice($(this).parent().parent());
+    console.log('was it removed?', employeeData);
+
+
     // when fire emoji is pressed, remove the row
     $(this).parent().parent().remove();
 }
